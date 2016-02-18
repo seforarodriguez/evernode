@@ -1,0 +1,12 @@
+h1 New Note
+
+form(method='POST', action='/notes')
+  .input-group
+    label(for='title') Title
+    //- By writing the for title on the label it links it to the input and if the title is clicked it relinks to input.
+    input#title(type='text', name='title')
+  .input-group
+    label(for='text') Text
+    textarea#text(type='text', name='text')
+  .input-group
+    input(type='submit', value='Save')
