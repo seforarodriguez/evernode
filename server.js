@@ -2,15 +2,14 @@
 
 const bodyParser = require('body-parser');
 const express = require('express');
+const methodOverride = require('method-override');
 const mongoose = require('mongoose');
+
+const note = require('./routes/note');
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-const Note = mongoose.model('Notes', mongoose.sCHEMA({
-  title: String,
-  text: String
-}));
 
 app.set('view engine', 'jade');
 
@@ -18,20 +17,13 @@ app.use(bodyParser.urlencoded({
   extended:false
 }));
 
+app.use(methodOverride('_method'));
+
 app.get('/', (req, res) => {
   res.send('Server Running! Catch it before it runs too far!')
 });
 
-app.get('/notes/new', (req, res) => {
-  res.render('new-note');
-});
-
-app.post('/notes', (req, res) => {
-  Note.create(req.body, (err) => {
-    if (err) throw err;
-    res.redirect('/');
-  });
-}); 
+app.use(note);
 
 mongoose.connect('mongodb://localhost:27017/evernode', (err) => {
   if (err) throw err;
