@@ -5,8 +5,6 @@ const router = express.Router();
 const note = require('../controllers/note');
 
 router.get('/notes', note.index);
-
-router.get('/notes', note.index);
 router.get('/notes/new', note.newNote);
 router.get('/notes/:id', note.show);
 router.get('/notes/:id/edit', note.edit);

@@ -18,7 +18,7 @@ module.exports.update = (req, res) => {
       res.redirect(`/notes/${note._id}`);
     }
   );
-};
+}
 
 module.exports.newNote = (req, res) => {
   res.render('new-note')
@@ -53,3 +53,4 @@ module.exports.index = (req, res) => {
     res.render('notes-index', {notes:notes});
   });
 };
+
