@@ -6,7 +6,7 @@ const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 
 const note = require('./routes/note');
-const categories = require('./route/categories');
+const categories = require('./routes/categories');
 
 const app = express();
 const port = process.env.PORT || 3000;

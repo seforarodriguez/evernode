@@ -1,15 +1,28 @@
 'use strict';
 
-module.exports.index = (req, res) => {
- res.send('Index working')
+const Category = require('../models/categories');
+
+module.exports ={
+  index (req, res) {
+    Category.find({}, (err, categories) => {
+      if(err) throw err;
+
+      res.render('category-index', {
+        categories:categories
+      })
+    })
+  },
+
+  newCat (req, res) {
+    res.render('category-new')
+  },
+
+  create (req, res) {
+    Category.create(req.body, (err) => {
+      if (err) throw err;
+
+    res.send('/categories')
+    })
+  }
 };
 
-
-module.exports.create = (req, res) => {
-  res.send('create created')
-};
-
-
-module.exports.newCategorie = (req, res) => {
-  res.send('new category done');
-};
