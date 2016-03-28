@@ -1,0 +1,10 @@
+h1 Categories New!
+
+  form(method='POST', action='/categories')
+    .input-group
+      label(for='name') Name
+      input#name(type='text', name='name')
+    .input-group(for='desc') Description
+      input#desc(type='text', name='description')
+    .input-group
+      input(type='submit')
